@@ -1,0 +1,11 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.main-body {
+    margin: 20px 25px 0px 25px;
+}
+
+.icon-display {
+    transform: scale(0.6);
+ }

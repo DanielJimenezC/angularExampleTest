@@ -1,0 +1,64 @@
+<h2>Local</h2>
+<mat-accordion>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Agregar Nuevo Item
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <form class="form-content example-form" #formDirective="ngForm" autocomplete="off" [formGroup]="itemForm" (ngSubmit)="ngSubmitForm(formDirective)">
+        <div class="row">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Id</mat-label>
+                <input matInput formControlName="id" placeholder="Id">
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="nombre" placeholder="Nombre">
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Edad</mat-label>
+                <input matInput formControlName="edad" placeholder="Edad">
+            </mat-form-field>
+            <div formArrayName="aliases">
+              <h3>Aliases</h3>
+              <button mat-raised-button color="primary" (click)="addAlias()" type="button" style="margin-bottom: 20px;">+ Add alias</button>
+              <div *ngFor="let alias of aliases.controls; let i=index">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Alias</mat-label>
+                  <input matInput type="text" [formControlName]="i" placeholder="Alias">
+                </mat-form-field>
+                <button mat-raised-button color="danger" (click)="removeAlias(i)" type="button" style="margin-bottom: 20px;">Remove</button>
+              </div>
+            </div>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!itemForm.valid">Agregar</button>
+        </div>
+      </form>
+      <br/>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Test</mat-label>
+        <input matInput type="text" placeholder="Search" (keyup)="search(getValue($event))">
+    </mat-form-field>
+    </mat-expansion-panel>
+  </mat-accordion>
+<br>
+<table mat-table [dataSource]="myData" class="mat-elevation-z8">
+  
+    <ng-container matColumnDef="Id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Nombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Edad">
+        <th mat-header-cell *matHeaderCellDef> Edad </th>
+        <td mat-cell *matCellDef="let element"> {{element.edad}} </td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

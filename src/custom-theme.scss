@@ -1,0 +1,14 @@
+@import '~@angular/material/theming';
+@import 'variables.scss';
+@include mat-core();
+
+$angular-project-example-primary: mat-palette($mat-indigo);
+$angular-project-example-accent: mat-palette($mat-amber, 700, 800, 900);
+$angular-project-example-warn: mat-palette($mat-red);
+
+$angular-project-example-typography: mat-typography-config($font-family: 'Signika, sans-serif');
+
+$angular-project-example-theme: mat-light-theme($angular-project-example-primary, $angular-project-example-accent, $angular-project-example-warn);
+@include angular-material-typography($angular-project-example-typography);
+
+@include angular-material-theme($angular-project-example-theme);

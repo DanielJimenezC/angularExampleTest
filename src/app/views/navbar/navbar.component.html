@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+    <span>Ejemplo Angular</span>
+    <span class="example-spacer"></span>
+    <button mat-button class="example-icon favorite-icon" aria-label="" [routerLink]="['/home/api']" routerLinkActive="active">
+        <span>Api</span>
+    </button>
+    <button mat-button class="example-icon" aria-label="" [routerLink]="['/home/local']" routerLinkActive="active">
+       <span>Local</span>
+    </button>
+    <button mat-button class="example-icon" aria-label="" [routerLink]="['/home/auth']" routerLinkActive="active" color="accent">
+        <span>Authorization</span>
+        <mat-icon class="icon-display">security</mat-icon>
+    </button>
+</mat-toolbar>
+<main class="main-body">
+    <router-outlet></router-outlet>
+</main>
